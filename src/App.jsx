@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Hero from './components/Hero';
 import ChatDemo from './components/ChatDemo';
+import Comparativo from './components/Comparativo';
 import FlowDiagram from './components/FlowDiagram';
 import Solutions from './components/Solutions';
 import CRMModal from './components/CRMModal';
-import ROICalculator from './components/ROICalculator';
 import Investment from './components/Investment';
 import Timeline from './components/Timeline';
 import { Layout } from 'lucide-react';
@@ -42,6 +42,7 @@ function App() {
         <Hero />
         <FlowDiagram />
         <ChatDemo />
+        <Comparativo />
         {/* CRM Teaser Section */}
         <section className="section" style={{ textAlign: 'center' }}>
           <div className="container">
@@ -68,7 +69,6 @@ function App() {
 
         <Solutions />
 
-        <ROICalculator />
         <Investment />
         <Timeline />
       </main>

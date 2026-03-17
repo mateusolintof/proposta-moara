@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Bot, Zap, BarChart3 } from 'lucide-react';
+import { ArrowRight, Bot, Zap, BookOpen } from 'lucide-react';
 
 const Hero = () => {
   const logoSrc = '/Logo 3-07.png'; // colocar este arquivo em /public
@@ -55,12 +55,12 @@ const Hero = () => {
             </div>
 
             <h1>
-              Atendimento Inteligente do <br />
-              <span style={{ color: 'var(--color-primary)' }}>Primeiro Contato ao Pós-Venda</span>
+              Atendimento Inteligente para a <br />
+              <span style={{ color: 'var(--color-primary)' }}>Start Move</span>
             </h1>
 
             <p style={{ fontSize: '1.2rem', marginBottom: '2.25rem', maxWidth: '620px' }}>
-              IA que qualifica leads, recupera oportunidades e fideliza clientes — tudo integrado a um CRM único.
+              IA que atende, qualifica e tira dúvidas dos seus leads — 24 horas por dia, 7 dias por semana.
             </p>
 
             <div className="hero-cta-stack" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
@@ -95,38 +95,39 @@ const Hero = () => {
           className="hero-cards"
         >
           {[
-            { icon: Bot, label: 'Atendimento IA', value: '24/7' },
-            { icon: Zap, label: 'Tempo de Resposta', value: '< 2 seg' },
-            {
-              icon: BarChart3,
-              label: 'Sistema com Atendimento SDR + Pós-venda + CRM de Gestão',
-              value: null
-            },
+            { icon: Bot, label: 'Atendimento IA', sublabel: 'Seu agente nunca tira folga', value: '24/7', color: '#3b82f6' },
+            { icon: Zap, label: 'Resposta Instantânea', sublabel: 'Tempo de resposta do agente', value: '< 2 seg', color: '#10b981' },
+            { icon: BookOpen, label: 'Conhecimento Total', sublabel: 'Base completa sobre a assessoria, planos e metodologia', value: null, color: '#8b5cf6' },
           ].map((item, index) => (
             <div
               key={index}
               className="glass-panel"
               style={{
-                padding: '1.5rem',
-                textAlign: 'center',
+                padding: '1.5rem 1.75rem',
+                textAlign: 'left',
                 width: '100%',
-                maxWidth: '260px',
-                justifySelf: 'center'
+                maxWidth: '280px',
+                justifySelf: 'center',
+                borderLeft: `3px solid ${item.color}`,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.35rem'
               }}
             >
-              <item.icon size={32} style={{ color: 'var(--color-primary)', marginBottom: '0.5rem' }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.25rem' }}>
+                <item.icon size={24} style={{ color: item.color, flexShrink: 0 }} />
+                <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text)' }}>{item.label}</span>
+              </div>
               {item.value && (
-                <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-text)' }}>{item.value}</div>
+                <div style={{ fontSize: '1.75rem', fontWeight: 800, color: item.color, letterSpacing: '-0.02em' }}>{item.value}</div>
               )}
               <div style={{
-                fontSize: '0.9rem',
+                fontSize: '0.85rem',
                 color: 'var(--color-text-muted)',
-                lineHeight: 1.35,
-                fontWeight: 600,
-                maxWidth: '520px',
-                margin: '0 auto'
+                lineHeight: 1.45,
+                fontWeight: 500
               }}>
-                {item.label}
+                {item.sublabel}
               </div>
             </div>
           ))}

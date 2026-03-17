@@ -9,7 +9,7 @@ const Investment = () => {
     const currentConv = 25; // dentro do benchmark saudável 20–35%
     const upliftFactor = 1.5;
     const setupCost = 5000;
-    const monthlyFee = 2000;
+    const monthlyFee = 500;
 
     const currentRevenue = leads * (currentConv / 100) * ticket;
     const projectedConv = currentConv * upliftFactor;
@@ -125,9 +125,12 @@ const Investment = () => {
                             </div>
 
                             <div style={{ marginBottom: '3rem', padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.05)' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', gap: '1rem' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem', gap: '1rem' }}>
                                     <span style={{ color: '#e4e4e7', fontWeight: 600, whiteSpace: 'nowrap' }}>Mensalidade</span>
-                                    <span style={{ color: 'white', fontWeight: 700, fontSize: '1.25rem', whiteSpace: 'nowrap' }}>R$ 2.000</span>
+                                    <span style={{ color: '#71717a', fontWeight: 600, fontSize: '1.1rem', whiteSpace: 'nowrap', textDecoration: 'line-through' }}>R$ 2.000</span>
+                                </div>
+                                <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.75rem' }}>
+                                    <span style={{ color: '#10b981', fontWeight: 800, fontSize: '1.75rem', whiteSpace: 'nowrap' }}>R$ 500</span>
                                 </div>
                                 <div style={{ color: '#71717a', fontSize: '0.85rem' }}>
                                     Inclui custos de servidores, banco de dados, suporte e melhoria contínua da IA.
@@ -237,7 +240,7 @@ const Investment = () => {
                                 {/* Situação atual */}
                                 <div style={{ padding: '0.9rem', borderRadius: '0.85rem', background: '#ffffff', border: '1px solid rgba(0,0,0,0.04)', boxShadow: '0 4px 10px rgba(0,0,0,0.04)' }}>
                                     <div style={{ fontSize: '0.8rem', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.35rem' }}>
-                                        Situação atual do salão
+                                        Situação atual
                                     </div>
                                     <div style={{ fontSize: '0.85rem', color: '#4b5563', marginBottom: '0.2rem' }}>
                                         Conversão atual: <strong>{currentConv}%</strong>

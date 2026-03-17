@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Users, MessageSquareText, PhoneOutgoing, Heart, LayoutDashboard, ArrowRight, X, ArrowLeft } from 'lucide-react';
+import { Users, MessageSquareText, CircleHelp, UserCheck, LayoutDashboard, ArrowRight, X, ArrowLeft } from 'lucide-react';
 
 const FlowDiagram = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const mainFlow = [
-        { icon: Users, label: 'Lead Entra', sublabel: 'WhatsApp / Chat / Form' },
-        { icon: MessageSquareText, label: 'Agente Atendimento', sublabel: 'Qualifica 24/7' },
-        { icon: PhoneOutgoing, label: 'Follow-up', sublabel: 'Recupera leads' },
+        { icon: Users, label: 'Lead Entra', sublabel: 'WhatsApp / Instagram / Indicação' },
+        { icon: MessageSquareText, label: 'Agente de Atendimento', sublabel: 'Qualifica e atende 24/7' },
+        { icon: CircleHelp, label: 'Agente FAQ', sublabel: 'Responde dúvidas' },
+        { icon: UserCheck, label: 'Encaminhamento', sublabel: 'Passa para a Moara' },
         { icon: LayoutDashboard, label: 'CRM', sublabel: 'Pipeline & Gestão' },
-        { icon: Heart, label: 'Pós-vendas', sublabel: 'Fideliza clientes' },
     ];
 
     return (
@@ -30,7 +30,7 @@ const FlowDiagram = () => {
                     </div>
                     <h2 style={{ marginBottom: '0.75rem' }}>Como Funciona</h2>
                     <p style={{ maxWidth: '720px', margin: '0 auto 1.5rem auto', color: 'var(--color-text-muted)' }}>
-                        Do primeiro contato ao pós-venda: atendimento imediato, follow-up automático e gestão completa no CRM.
+                        Do primeiro contato ao CRM: atendimento imediato, dúvidas respondidas automaticamente e encaminhamento para a Moara quando necessário.
                     </p>
                     <button className="btn btn-primary" onClick={() => setIsOpen(true)} style={{ justifyContent: 'center' }}>
                         Ver Fluxo

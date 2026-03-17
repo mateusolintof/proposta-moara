@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageSquareText, PhoneOutgoing, Heart, LayoutDashboard } from 'lucide-react';
+import { MessageSquareText, CircleHelp } from 'lucide-react';
 
 const SolutionCard = ({ solution, index }) => {
     const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
@@ -110,31 +110,17 @@ const Solutions = () => {
     const solutions = [
         {
             icon: MessageSquareText,
-            title: 'Agente de Atendimento',
-            description: 'Qualifica e atende leads automaticamente via WhatsApp. Adapta-se ao contexto da conversa com base de conhecimento personalizada do seu negócio.',
-            highlights: ['Disponível 24/7', 'Respostas contextuais', 'Integração com agenda'],
+            title: 'Agente de Atendimento Completo',
+            description: 'Agente com conhecimento completo sobre a Start Move: planos, valores, metodologia e diferenciais. Atende e qualifica leads via WhatsApp 24/7 com respostas naturais e contextuais. Em situações que exigem atenção especial ou negociações diferenciadas, a conversa é encaminhada diretamente para a Moara.',
+            highlights: ['Disponível 24/7', 'Conhecimento completo do negócio', 'Respostas naturais e contextuais', 'Encaminhamento para a Moara'],
             color: '#3b82f6'
         },
         {
-            icon: PhoneOutgoing,
-            title: 'Agente de Follow-up + No-show',
-            description: 'Reativa automaticamente leads que foram qualificados mas não concluíram a compra. Mantém o relacionamento ativo sem esforço manual. Além de realizar remarcações de clientes.',
-            highlights: ['Sequências personalizadas', 'Timing inteligente', 'Sem leads esquecidos'],
+            icon: CircleHelp,
+            title: 'Agente de FAQ',
+            description: 'Responde dúvidas frequentes dos alunos e interessados com base de conhecimento completa sobre treinos, metodologia, planos e logística da assessoria. Disponível a qualquer hora para tirar dúvidas com respostas precisas e instantâneas.',
+            highlights: ['Base de conhecimento completa', 'Respostas instantâneas', 'Tira dúvidas 24/7'],
             color: '#10b981'
-        },
-        {
-            icon: Heart,
-            title: 'Agente Pós-vendas',
-            description: 'Fideliza clientes através de pesquisas de satisfação (NPS/CSAT), fluxos de recompra e campanhas de remarketing automatizadas.',
-            highlights: ['Pesquisa NPS/CSAT', 'Fluxos de recompra', 'Cupons e promoções'],
-            color: '#f59e0b'
-        },
-        {
-            icon: LayoutDashboard,
-            title: 'CRM Personalizado',
-            description: 'Centralize toda sua operação comercial. Pipelines visuais, inbox unificado de todas as conversas e dashboards de performance em tempo real.',
-            highlights: ['Pipelines de vendas', 'Inbox unificado', 'Relatórios em tempo real'],
-            color: '#8b5cf6'
         }
     ];
 
@@ -155,13 +141,13 @@ const Solutions = () => {
                     }}>
                         <span style={{ fontSize: '0.875rem', fontWeight: 600 }}>O que entregamos</span>
                     </div>
-                    <h2>Soluções Integradas para sua Operação</h2>
+                    <h2>Soluções Integradas para a Start Move</h2>
                     <p style={{ maxWidth: '600px', margin: '0 auto' }}>
-                        Quatro pilares que trabalham juntos: do primeiro contato à fidelização do cliente.
+                        Dois agentes inteligentes que trabalham juntos para atender, qualificar e tirar dúvidas dos seus leads automaticamente.
                     </p>
                 </div>
 
-                <div className="layout-grid cols-2 cols-4 align-start">
+                <div className="layout-grid cols-2 align-start">
                     {solutions.map((solution, index) => (
                         <SolutionCard key={index} solution={solution} index={index} />
                     ))}

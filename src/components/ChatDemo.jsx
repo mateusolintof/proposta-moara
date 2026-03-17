@@ -28,24 +28,22 @@ const ChatDemo = () => {
 
     const script = [
         { text: "Oi! Tudo bem? 😊", delay: 1600 },
-        { text: "Sou a Alice, atendente do Studio Bella.", delay: 1600 },
+        { text: "Sou a assistente da Start Move, assessoria de corrida da Moara Souza.", delay: 1800 },
         { text: "Como posso te ajudar hoje?", delay: 1600 },
-        { userText: "Gostaria de saber sobre os serviços que vocês atendem no Salão", delay: 1600 },
-        { text: "Claro! Trabalhamos com cortes femininos e masculinos", delay: 1600 },
-        { text: "E diversos outros protocolos e tratamentos", delay: 1300 },
-        { text: "tanto para cabelo, unha e pele", delay: 1300 },
-        { text: "Tem algo específico que te interessa?", delay: 1600 },
-        { userText: "Quero saber sobre o Corte Masculino e Selagem. Quanto custa?", delay: 1600 },
-        { text: "Ótima escolha! 😊", delay: 1300 },
-        { text: "O corte masculino tem o valor de R$ 80,00 e a selagem tem o valor de R$ 180,00.", delay: 1950 },
-        { text: "Posso verificar os horários disponíveis pra você?", delay: 1600 },
-        { userText: "Pode sim! Tenho preferência por sábado", delay: 1600 },
-        { text: "Deixa eu ver aqui...", delay: 1300 },
-        { text: "Temos sábado às 10h ou às 14h30. Qual fica melhor?", delay: 1950 },
-        { userText: "14h30 fica perfeito", delay: 1600 },
-        { text: "Perfeito! ✨", delay: 1300 },
-        { text: "Agendado: corte masculino + selagem no sábado às 14h30 com a Carla.", delay: 1950 },
-        { text: "Vou te enviar uma confirmação amanhã, tá bom?", delay: 1600 }
+        { userText: "Oi! Vi sobre a assessoria de corrida e gostaria de saber mais", delay: 1600 },
+        { text: "Que legal que você se interessou! 🏃‍♀️", delay: 1300 },
+        { text: "A Start Move é uma assessoria esportiva focada em corrida, com treinos personalizados pra cada aluno.", delay: 1800 },
+        { text: "Temos planos pra iniciantes, intermediários e avançados. Qual é o seu nível hoje?", delay: 1800 },
+        { userText: "Sou iniciante, nunca corri com acompanhamento", delay: 1600 },
+        { text: "Perfeito! A Moara tem uma metodologia especial pra quem tá começando.", delay: 1800 },
+        { text: "O treino é progressivo, respeitando seu corpo e evitando lesões. Você recebe planilha personalizada e acompanhamento semanal.", delay: 2000 },
+        { userText: "Que legal! E quanto custa?", delay: 1600 },
+        { text: "O plano iniciante é R$ 197/mês e inclui treinos personalizados 3x por semana + suporte direto.", delay: 1950 },
+        { text: "Quer que eu agende uma conversa rápida com a Moara? Assim ela pode entender melhor seus objetivos e montar um plano sob medida pra você! 💪", delay: 2000 },
+        { userText: "Quero sim!", delay: 1600 },
+        { text: "Maravilha! ✨", delay: 1300 },
+        { text: "Vou encaminhar você pra Moara. Ela vai entrar em contato pra agendar a conversa.", delay: 1950 },
+        { text: "Seja bem-vinda à Start Move! 🏃‍♀️", delay: 1600 }
     ];
 
     const runSimulation = async () => {
@@ -97,7 +95,7 @@ const ChatDemo = () => {
                     </div>
                     <h2 style={{ textAlign: 'center' }}>Atendimento via WhatsApp</h2>
                     <p style={{ textAlign: 'center', maxWidth: '560px', marginBottom: '0.75rem' }}>
-                        Veja como o agente interage de forma contextual: entende a necessidade, oferece opções e confirma agendamentos integrados ao seu sistema.
+                        Veja como o agente interage de forma contextual: entende a necessidade, apresenta os planos e encaminha para a Moara quando necessário.
                     </p>
 
                 </div>
@@ -107,8 +105,8 @@ const ChatDemo = () => {
                     <div style={{ flex: 1, minWidth: 0, paddingRight: '0.25rem' }}>
                         {[
                             "Conversa natural e contextualizada como um humano conversaria",
-                            "Integração com agenda e sistemas",
-                            "Base de conhecimento personalizada",
+                            "Conhecimento completo sobre planos e metodologia",
+                            "Encaminhamento para a Moara quando necessário",
                             "Disponível 24 horas, 7 dias por semana"
                         ].map((feature, i) => (
                             <motion.div
@@ -171,7 +169,7 @@ const ChatDemo = () => {
                                     <Bot size={20} color="#000" />
                                 </div>
                                 <div style={{ flex: 1 }}>
-                                    <div style={{ fontSize: '0.9rem', fontWeight: 600 }}>Studio Bella</div>
+                                    <div style={{ fontSize: '0.9rem', fontWeight: 600 }}>Moara Souza</div>
                                     <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.8)' }}>online</div>
                                 </div>
                                 <Video size={20} />
@@ -224,7 +222,7 @@ const ChatDemo = () => {
                                                     marginBottom: '0.2rem',
                                                     marginLeft: '0.1rem'
                                                 }}>
-                                                    {msg.sender === 'user' ? 'Você' : 'Studio Bella'}
+                                                    {msg.sender === 'user' ? 'Você' : 'Moara Souza'}
                                                 </div>
                                                 <div style={{
                                                     background: msg.sender === 'user' ? 'var(--color-success)' : 'white', // Light Green for User
@@ -328,9 +326,7 @@ const ChatDemo = () => {
                             {simulationStarted ? 'Reiniciar Simulação' : 'Iniciar Simulação'}
                         </button>
                         <p style={{ textAlign: 'center', fontSize: '0.85rem', color: 'var(--color-text-muted)', maxWidth: '520px', margin: '0 auto' }}>
-                            Exemplo ilustrativo para salão de beleza.
-                            <br />
-                            Lógica se aplica a outros nichos.
+                            Exemplo ilustrativo de atendimento para assessoria de corrida.
                         </p>
                         <button
                             onClick={() => setIsModalOpen(true)}
