@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, User, X, ZoomIn, MessageSquareText, Clock, Heart, MessageCircle, AlertTriangle, Timer, TextSelect } from 'lucide-react';
+import { Bot, User, X, ZoomIn, MessageSquareText, Clock, Heart, MessageCircle, AlertTriangle, Timer, TextSelect, ShieldCheck, Target, Sparkles, ArrowRight } from 'lucide-react';
 
 const iaImages = [
     { src: '/comparativo/atendimentoIA1.png', alt: 'Atendimento IA - Parte 1' },
@@ -127,27 +127,45 @@ const Comparativo = () => {
                                 padding: '1.25rem',
                                 display: 'flex',
                                 flexDirection: 'column',
-                                gap: '0.85rem'
+                                gap: '1rem'
                             }}>
                                 <p style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-primary)', margin: 0, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                                     O que observar:
                                 </p>
                                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                                     <Clock size={15} color="var(--color-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
-                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.5 }}>
-                                        <strong>Resposta em segundos</strong> — repare nos horários: a IA responde no mesmo minuto, sem deixar o lead esperando.
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.55 }}>
+                                        <strong>Resposta em segundos</strong> — repare nos horários: a lead manda mensagem às 09:43 e a IA responde às 09:44. Zero tempo de espera. O lead nunca esfria.
+                                    </p>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                                    <Target size={15} color="var(--color-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.55 }}>
+                                        <strong>Qualificação consultiva</strong> — a IA não sai empurrando serviço. Ela primeiro pergunta sobre o histórico da lead: "Você já tentou de outras formas? Foi com dieta, academia ou acompanhamento médico?". Isso gera confiança e coleta informações para personalizar a abordagem.
                                     </p>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                                     <Heart size={15} color="var(--color-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
-                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.5 }}>
-                                        <strong>Empatia e contexto</strong> — quando a lead diz que tentou emagrecer "tomando chá", a IA acolhe, valida a experiência e conecta com a solução de forma natural.
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.55 }}>
+                                        <strong>Contorno de objeção natural</strong> — quando a lead diz que tentou emagrecer "tomando chá", a IA não ignora. Ela acolhe: "Muita gente chega aqui contando que já tentou vários métodos caseiros, mas sente dificuldade de manter o resultado". Isso transforma uma objeção em ponte para a solução.
+                                    </p>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                                    <ShieldCheck size={15} color="var(--color-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.55 }}>
+                                        <strong>Pede permissão antes de vender</strong> — "Posso te explicar rapidinho como funciona o nosso método?". Essa técnica de venda consultiva aumenta drasticamente a receptividade do lead. A pessoa se sente ouvida, não pressionada.
+                                    </p>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                                    <Sparkles size={15} color="var(--color-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.55 }}>
+                                        <strong>Diferenciação do serviço</strong> — a IA sabe apresentar o valor real: "O Dr. Igor não passa apenas uma dieta. Ele faz uma análise profunda do seu histórico de saúde. A consulta tem cerca de 1h30". Isso posiciona o serviço como premium e justifica o investimento.
                                     </p>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                                     <MessageCircle size={15} color="var(--color-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
-                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.5 }}>
-                                        <strong>Mensagens curtas e naturais</strong> — a IA quebra as respostas em mensagens sequenciais, exatamente como um humano faz no WhatsApp. Sem "textões".
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.55 }}>
+                                        <strong>Tom humano e fragmentado</strong> — as mensagens são curtas e sequenciais, como um humano faria no WhatsApp. Usa o nome da pessoa ("Entendi, Vitoria..."), criando proximidade. Ninguém percebe que é uma IA.
                                     </p>
                                 </div>
                             </div>
@@ -184,33 +202,82 @@ const Comparativo = () => {
                                 padding: '1.25rem',
                                 display: 'flex',
                                 flexDirection: 'column',
-                                gap: '0.85rem'
+                                gap: '1rem'
                             }}>
                                 <p style={{ fontSize: '0.8rem', fontWeight: 700, color: '#ef4444', margin: 0, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                                     O que observar:
                                 </p>
                                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                                     <Timer size={15} color="#ef4444" style={{ marginTop: '2px', flexShrink: 0 }} />
-                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.5 }}>
-                                        <strong>Demora de minutos a horas</strong> — a lead manda mensagem às 09:36 e só recebe resposta às 09:43. Em outro caso, o intervalo chega a quase 1 hora.
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.55 }}>
+                                        <strong>Demora de 7 minutos a 1 hora</strong> — a lead manda mensagem às 09:36 e só recebe resposta às 09:43. No segundo print, o intervalo entre mensagens chega a quase 1 hora. Nesse tempo, o lead já pode ter procurado um concorrente.
                                     </p>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                                     <AlertTriangle size={15} color="#ef4444" style={{ marginTop: '2px', flexShrink: 0 }} />
-                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.5 }}>
-                                        <strong>Respostas genéricas</strong> — frases como "vai amar o acompanhamento" não qualificam o lead nem geram conexão real com a necessidade da pessoa.
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.55 }}>
+                                        <strong>Zero qualificação, só script</strong> — a lead diz que quer ganhar massa e a resposta é genérica: "vai amar o acompanhamento". Não pergunta sobre histórico, objetivo, restrições. Não adapta a abordagem ao que a pessoa disse.
                                     </p>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                                     <TextSelect size={15} color="#ef4444" style={{ marginTop: '2px', flexShrink: 0 }} />
-                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.5 }}>
-                                        <strong>Blocos enormes de texto</strong> — o atendente envia um parágrafo gigante explicando tudo de uma vez. Isso assusta o lead e diminui a taxa de resposta.
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.55 }}>
+                                        <strong>Bloco enorme de texto</strong> — no segundo print, o atendente envia um parágrafo gigante sobre bioimpedância, composição corporal, gordura visceral etc. Isso sobrecarrega o lead e faz com que muitos parem de responder.
+                                    </p>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                                    <User size={15} color="#ef4444" style={{ marginTop: '2px', flexShrink: 0 }} />
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.55 }}>
+                                        <strong>Sem personalização</strong> — as respostas poderiam ser enviadas para qualquer pessoa. Não usa o nome do lead, não referencia o que foi dito antes. A lead se sente como mais uma na fila.
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                {/* Conclusion Block */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    style={{
+                        maxWidth: '800px',
+                        margin: '3rem auto 0 auto',
+                        background: '#0f172a',
+                        borderRadius: '1.25rem',
+                        padding: '2rem 2.25rem',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        boxShadow: '0 20px 50px -12px rgba(0,0,0,0.3)'
+                    }}
+                >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+                        <Sparkles size={18} color="#10b981" />
+                        <p style={{ fontSize: '0.8rem', fontWeight: 700, color: '#10b981', margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                            O que isso significa para a Start Move
+                        </p>
+                    </div>
+                    <p style={{ color: '#e4e4e7', fontSize: '1.05rem', lineHeight: 1.7, margin: '0 0 1.25rem 0' }}>
+                        Esses prints são de um agente real que a Convert criou para outra empresa. <strong style={{ color: 'white' }}>O mesmo nível de qualidade será aplicado na Start Move</strong> — mas adaptado ao universo da assessoria esportiva: planos de treino, metodologia, valores e diferenciais da Moara.
+                    </p>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+                        <div style={{ padding: '1rem', background: 'rgba(16, 185, 129, 0.08)', borderRadius: '0.75rem', border: '1px solid rgba(16, 185, 129, 0.15)' }}>
+                            <p style={{ fontSize: '0.85rem', color: '#e4e4e7', margin: 0, lineHeight: 1.5 }}>
+                                <strong style={{ color: '#10b981' }}>Cada lead atendido em segundos</strong> — enquanto a Moara foca nos treinos, a IA cuida de quem chega pelo WhatsApp.
+                            </p>
+                        </div>
+                        <div style={{ padding: '1rem', background: 'rgba(16, 185, 129, 0.08)', borderRadius: '0.75rem', border: '1px solid rgba(16, 185, 129, 0.15)' }}>
+                            <p style={{ fontSize: '0.85rem', color: '#e4e4e7', margin: 0, lineHeight: 1.5 }}>
+                                <strong style={{ color: '#10b981' }}>Qualificação inteligente</strong> — a IA entende o nível do lead (iniciante, intermediário, avançado) e apresenta o plano certo.
+                            </p>
+                        </div>
+                        <div style={{ padding: '1rem', background: 'rgba(16, 185, 129, 0.08)', borderRadius: '0.75rem', border: '1px solid rgba(16, 185, 129, 0.15)' }}>
+                            <p style={{ fontSize: '0.85rem', color: '#e4e4e7', margin: 0, lineHeight: 1.5 }}>
+                                <strong style={{ color: '#10b981' }}>Encaminhamento natural</strong> — quando o lead está pronto, a IA passa a conversa para a Moara fechar o negócio pessoalmente.
+                            </p>
+                        </div>
+                    </div>
+                </motion.div>
 
                 <p style={{ textAlign: 'center', fontSize: '0.8rem', color: 'var(--color-text-muted)', marginTop: '2rem' }}>
                     Clique nas imagens para ampliar. * Prints reais de atendimentos da Convert.AI (nomes alterados para privacidade)
