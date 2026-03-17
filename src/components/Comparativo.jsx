@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, User, X, ZoomIn, MessageSquareText } from 'lucide-react';
+import { Bot, User, X, ZoomIn, MessageSquareText, Clock, Heart, MessageCircle, AlertTriangle, Timer, TextSelect } from 'lucide-react';
 
 const iaImages = [
     { src: '/comparativo/atendimentoIA1.png', alt: 'Atendimento IA - Parte 1' },
@@ -90,13 +90,13 @@ const Comparativo = () => {
                     </p>
                 </div>
 
-                <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+                <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
                     <div style={{
                         display: 'grid',
                         gridTemplateColumns: '1fr 1fr',
-                        gap: '2rem'
+                        gap: '2.5rem'
                     }}>
-                        {/* IA Images */}
+                        {/* IA Column */}
                         <div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center', marginBottom: '1rem' }}>
                                 <div style={{
@@ -108,7 +108,7 @@ const Comparativo = () => {
                                 </div>
                                 <h3 style={{ fontSize: '1rem', fontWeight: 700, margin: 0 }}>Atendimento por IA</h3>
                             </div>
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '1.25rem' }}>
                                 {iaImages.map((image, index) => (
                                     <ImageCard
                                         key={index}
@@ -118,9 +118,42 @@ const Comparativo = () => {
                                     />
                                 ))}
                             </div>
+
+                            {/* IA Insights */}
+                            <div style={{
+                                background: 'rgba(1, 49, 23, 0.04)',
+                                border: '1px solid rgba(1, 49, 23, 0.12)',
+                                borderRadius: '1rem',
+                                padding: '1.25rem',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.85rem'
+                            }}>
+                                <p style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-primary)', margin: 0, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                                    O que observar:
+                                </p>
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                                    <Clock size={15} color="var(--color-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.5 }}>
+                                        <strong>Resposta em segundos</strong> — repare nos horários: a IA responde no mesmo minuto, sem deixar o lead esperando.
+                                    </p>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                                    <Heart size={15} color="var(--color-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.5 }}>
+                                        <strong>Empatia e contexto</strong> — quando a lead diz que tentou emagrecer "tomando chá", a IA acolhe, valida a experiência e conecta com a solução de forma natural.
+                                    </p>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                                    <MessageCircle size={15} color="var(--color-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.5 }}>
+                                        <strong>Mensagens curtas e naturais</strong> — a IA quebra as respostas em mensagens sequenciais, exatamente como um humano faz no WhatsApp. Sem "textões".
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
-                        {/* Human Images */}
+                        {/* Human Column */}
                         <div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center', marginBottom: '1rem' }}>
                                 <div style={{
@@ -132,7 +165,7 @@ const Comparativo = () => {
                                 </div>
                                 <h3 style={{ fontSize: '1rem', fontWeight: 700, margin: 0 }}>Atendimento Humano</h3>
                             </div>
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '1.25rem' }}>
                                 {humanImages.map((image, index) => (
                                     <ImageCard
                                         key={index}
@@ -142,11 +175,44 @@ const Comparativo = () => {
                                     />
                                 ))}
                             </div>
+
+                            {/* Human Insights */}
+                            <div style={{
+                                background: 'rgba(239, 68, 68, 0.04)',
+                                border: '1px solid rgba(239, 68, 68, 0.12)',
+                                borderRadius: '1rem',
+                                padding: '1.25rem',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.85rem'
+                            }}>
+                                <p style={{ fontSize: '0.8rem', fontWeight: 700, color: '#ef4444', margin: 0, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                                    O que observar:
+                                </p>
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                                    <Timer size={15} color="#ef4444" style={{ marginTop: '2px', flexShrink: 0 }} />
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.5 }}>
+                                        <strong>Demora de minutos a horas</strong> — a lead manda mensagem às 09:36 e só recebe resposta às 09:43. Em outro caso, o intervalo chega a quase 1 hora.
+                                    </p>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                                    <AlertTriangle size={15} color="#ef4444" style={{ marginTop: '2px', flexShrink: 0 }} />
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.5 }}>
+                                        <strong>Respostas genéricas</strong> — frases como "vai amar o acompanhamento" não qualificam o lead nem geram conexão real com a necessidade da pessoa.
+                                    </p>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                                    <TextSelect size={15} color="#ef4444" style={{ marginTop: '2px', flexShrink: 0 }} />
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.5 }}>
+                                        <strong>Blocos enormes de texto</strong> — o atendente envia um parágrafo gigante explicando tudo de uma vez. Isso assusta o lead e diminui a taxa de resposta.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <p style={{ textAlign: 'center', fontSize: '0.8rem', color: 'var(--color-text-muted)', marginTop: '1.5rem' }}>
+                <p style={{ textAlign: 'center', fontSize: '0.8rem', color: 'var(--color-text-muted)', marginTop: '2rem' }}>
                     Clique nas imagens para ampliar. * Prints reais de atendimentos da Convert.AI (nomes alterados para privacidade)
                 </p>
             </div>
