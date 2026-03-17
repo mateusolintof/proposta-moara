@@ -150,13 +150,7 @@ const Comparativo = () => {
                                         <strong>Contorno de objeção natural</strong> — quando a lead diz que tentou emagrecer "tomando chá", a IA não ignora. Ela acolhe: "Muita gente chega aqui contando que já tentou vários métodos caseiros, mas sente dificuldade de manter o resultado". Isso transforma uma objeção em ponte para a solução.
                                     </p>
                                 </div>
-                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
-                                    <ShieldCheck size={15} color="var(--color-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
-                                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.55 }}>
-                                        <strong>Pede permissão antes de vender</strong> — "Posso te explicar rapidinho como funciona o nosso método?". Essa técnica de venda consultiva aumenta drasticamente a receptividade do lead. A pessoa se sente ouvida, não pressionada.
-                                    </p>
-                                </div>
-                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+<div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                                     <Sparkles size={15} color="var(--color-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
                                     <p style={{ fontSize: '0.85rem', color: 'var(--color-text)', margin: 0, lineHeight: 1.55 }}>
                                         <strong>Diferenciação do serviço</strong> — a IA sabe apresentar o valor real: "O Dr. Igor não passa apenas uma dieta. Ele faz uma análise profunda do seu histórico de saúde. A consulta tem cerca de 1h30". Isso posiciona o serviço como premium e justifica o investimento.
