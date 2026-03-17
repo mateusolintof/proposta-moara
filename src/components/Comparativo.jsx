@@ -1,175 +1,71 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Bot, User, Zap, Clock, MessageSquareText } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Bot, User, X, ZoomIn, MessageSquareText } from 'lucide-react';
 
-const iaConversation = [
-    {
-        sender: 'bot',
-        text: 'Oi, Ana! Tudo bem? 😊 Sou a assistente da Start Move, assessoria de corrida da Moara Souza. Vi que você se interessou pela assessoria. Posso te contar como funciona?',
-        time: '09:02',
-    },
-    {
-        sender: 'user',
-        text: 'Oi! Sim, quero saber mais. Sou iniciante na corrida.',
-        time: '09:03',
-    },
-    {
-        sender: 'bot',
-        text: 'Que legal que quer começar, Ana! A Moara tem um método especial pra iniciantes — o treino é progressivo, respeitando seu corpo e evitando lesões.',
-        time: '09:03',
-    },
-    {
-        sender: 'bot',
-        text: 'A assessoria inclui planilha de treino personalizada, acompanhamento semanal e suporte pra tirar dúvidas. Quer saber sobre valores e como funciona o acompanhamento?',
-        time: '09:04',
-    },
-    {
-        sender: 'user',
-        text: 'Sim, por favor!',
-        time: '09:04',
-    },
-    {
-        sender: 'bot',
-        text: 'Perfeito! Para o plano iniciante, o investimento é de R$ 197/mês. Inclui treinos personalizados 3x por semana, ajustes semanais e acesso direto à Moara pra dúvidas.',
-        time: '09:05',
-    },
-    {
-        sender: 'bot',
-        text: 'Posso agendar uma conversa rápida com a Moara pra ela montar um plano sob medida pra você? 🏃‍♀️',
-        time: '09:05',
-    },
+const iaImages = [
+    { src: '/comparativo/atendimentoIA1.png', alt: 'Atendimento IA - Parte 1' },
+    { src: '/comparativo/atendimentoIA2.png', alt: 'Atendimento IA - Parte 2' },
 ];
 
-const humanConversation = [
-    {
-        sender: 'bot',
-        text: 'Oi! Tudo bem?',
-        time: '09:02',
-    },
-    {
-        sender: 'user',
-        text: 'Oi! Quero saber sobre a assessoria de corrida',
-        time: '09:03',
-    },
-    {
-        sender: 'bot',
-        text: 'Claro! Temos assessoria sim',
-        time: '09:47',
-    },
-    {
-        sender: 'bot',
-        text: 'Você já corre?',
-        time: '09:47',
-    },
-    {
-        sender: 'user',
-        text: 'Sou iniciante. Quanto custa?',
-        time: '09:48',
-    },
-    {
-        sender: 'bot',
-        text: 'Vou verificar e te retorno!',
-        time: '10:15',
-    },
+const humanImages = [
+    { src: '/comparativo/atendimentohumano1.png', alt: 'Atendimento Humano - Parte 1' },
+    { src: '/comparativo/atendimentohumano2.png', alt: 'Atendimento Humano - Parte 2' },
 ];
 
-const ChatBubble = ({ message, isIA }) => {
-    const isBot = message.sender === 'bot';
-    const accentColor = isIA ? 'var(--color-primary)' : '#6b7280';
+const ImageCard = ({ image, borderColor, onSelect }) => {
+    const [isHovering, setIsHovering] = useState(false);
 
     return (
-        <div style={{ display: 'flex', justifyContent: isBot ? 'flex-start' : 'flex-end', marginBottom: '0.5rem' }}>
-            <div style={{
-                maxWidth: '85%',
-                borderRadius: '0.75rem',
-                borderTopLeftRadius: isBot ? '0.15rem' : '0.75rem',
-                borderTopRightRadius: !isBot ? '0.15rem' : '0.75rem',
-                padding: '0.5rem 0.75rem',
-                background: isBot ? 'var(--color-bg)' : 'rgba(170, 190, 214, 0.15)',
-                border: '1px solid var(--color-border)'
-            }}>
-                {isBot && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.25rem' }}>
-                        {isIA ? (
-                            <Bot size={12} color={accentColor} />
-                        ) : (
-                            <User size={12} color={accentColor} />
-                        )}
-                        <span style={{ fontSize: '0.65rem', fontWeight: 600, color: accentColor }}>
-                            {isIA ? 'Agente IA' : 'Atendente'}
-                        </span>
-                        {message.time && (
-                            <span style={{ fontSize: '0.6rem', color: 'var(--color-text-muted)' }}>{message.time}</span>
-                        )}
-                    </div>
-                )}
-                <p style={{ fontSize: '0.78rem', color: 'var(--color-text)', lineHeight: 1.5, margin: 0 }}>{message.text}</p>
-                {!isBot && message.time && (
-                    <p style={{ fontSize: '0.6rem', color: 'var(--color-text-muted)', textAlign: 'right', marginTop: '0.15rem', marginBottom: 0 }}>
-                        {message.time}
-                    </p>
-                )}
-            </div>
-        </div>
-    );
-};
-
-const ConversationCard = ({ title, subtitle, messages, isIA, highlight, highlightColor }) => {
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="glass-panel"
+        <motion.button
+            type="button"
+            onClick={() => onSelect(image)}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             style={{
-                padding: 0,
+                position: 'relative',
+                borderRadius: '0.75rem',
                 overflow: 'hidden',
-                background: 'white'
+                border: `1px solid ${borderColor}40`,
+                background: 'white',
+                cursor: 'pointer',
+                padding: 0,
+                display: 'block',
+                width: '100%'
             }}
         >
-            {/* Header */}
+            <img
+                src={image.src}
+                alt={image.alt}
+                loading="lazy"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
             <div style={{
-                padding: '0.85rem 1rem',
-                borderBottom: '1px solid var(--color-border)',
-                background: `${highlightColor}08`
+                position: 'absolute',
+                inset: 0,
+                background: isHovering ? 'rgba(0,0,0,0.4)' : 'transparent',
+                transition: 'background 0.3s',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
             }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        {isIA ? (
-                            <Bot size={20} color={highlightColor} />
-                        ) : (
-                            <User size={20} color={highlightColor} />
-                        )}
-                        <div>
-                            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, margin: 0, color: 'var(--color-text)' }}>{title}</h4>
-                            <p style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)', margin: 0 }}>{subtitle}</p>
-                        </div>
-                    </div>
-                    <span style={{
-                        fontSize: '0.7rem',
-                        padding: '0.2rem 0.6rem',
-                        borderRadius: '999px',
-                        fontWeight: 600,
-                        background: `${highlightColor}15`,
-                        color: highlightColor,
-                        border: `1px solid ${highlightColor}30`
-                    }}>
-                        {highlight}
-                    </span>
-                </div>
+                <ZoomIn
+                    size={28}
+                    color="white"
+                    style={{
+                        opacity: isHovering ? 1 : 0,
+                        transition: 'opacity 0.3s'
+                    }}
+                />
             </div>
-
-            {/* Chat */}
-            <div style={{ padding: '1rem', height: '320px', overflowY: 'auto' }}>
-                {messages.map((message, index) => (
-                    <ChatBubble key={index} message={message} isIA={isIA} />
-                ))}
-            </div>
-        </motion.div>
+        </motion.button>
     );
 };
 
 const Comparativo = () => {
+    const [selectedImage, setSelectedImage] = useState(null);
+
     return (
         <section className="section" style={{ background: 'var(--color-bg)' }}>
             <div className="container">
@@ -190,75 +86,142 @@ const Comparativo = () => {
                     </div>
                     <h2>Atendimento IA vs Humano</h2>
                     <p style={{ maxWidth: '600px', margin: '0 auto' }}>
-                        Veja a diferença entre um atendimento automatizado com IA e um atendimento humano tradicional.
+                        Prints reais de conversas mostrando a diferença entre o atendimento automatizado com IA e o atendimento humano tradicional.
                     </p>
                 </div>
 
-                {/* Comparison Cards */}
-                <div className="layout-grid cols-2 align-start">
-                    <ConversationCard
-                        title="Atendimento por IA"
-                        subtitle="Agente automatizado"
-                        messages={iaConversation}
-                        isIA={true}
-                        highlight="Resposta em segundos"
-                        highlightColor="#013117"
-                    />
-                    <ConversationCard
-                        title="Atendimento Humano"
-                        subtitle="Atendente tradicional"
-                        messages={humanConversation}
-                        isIA={false}
-                        highlight="Resposta em minutos"
-                        highlightColor="#6b7280"
-                    />
+                <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: '1fr 1fr',
+                        gap: '2rem'
+                    }}>
+                        {/* IA Images */}
+                        <div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center', marginBottom: '1rem' }}>
+                                <div style={{
+                                    padding: '0.4rem',
+                                    borderRadius: '0.5rem',
+                                    background: 'rgba(1, 49, 23, 0.1)'
+                                }}>
+                                    <Bot size={18} color="var(--color-primary)" />
+                                </div>
+                                <h3 style={{ fontSize: '1rem', fontWeight: 700, margin: 0 }}>Atendimento por IA</h3>
+                            </div>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                                {iaImages.map((image, index) => (
+                                    <ImageCard
+                                        key={index}
+                                        image={image}
+                                        borderColor="var(--color-primary)"
+                                        onSelect={setSelectedImage}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Human Images */}
+                        <div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center', marginBottom: '1rem' }}>
+                                <div style={{
+                                    padding: '0.4rem',
+                                    borderRadius: '0.5rem',
+                                    background: 'rgba(239, 68, 68, 0.1)'
+                                }}>
+                                    <User size={18} color="#ef4444" />
+                                </div>
+                                <h3 style={{ fontSize: '1rem', fontWeight: 700, margin: 0 }}>Atendimento Humano</h3>
+                            </div>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                                {humanImages.map((image, index) => (
+                                    <ImageCard
+                                        key={index}
+                                        image={image}
+                                        borderColor="#ef4444"
+                                        onSelect={setSelectedImage}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                {/* Key Differences */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-                        gap: '1rem',
-                        marginTop: '2rem'
-                    }}
-                >
-                    <div className="glass-panel" style={{ padding: '1.25rem', borderLeft: '3px solid var(--color-primary)' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                            <Zap size={16} color="var(--color-primary)" />
-                            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-primary)' }}>Velocidade</span>
-                        </div>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.5 }}>
-                            IA responde instantaneamente, mesmo fora do horário comercial. Humano depende de disponibilidade.
-                        </p>
-                    </div>
-                    <div className="glass-panel" style={{ padding: '1.25rem', borderLeft: '3px solid var(--color-primary)' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                            <Bot size={16} color="var(--color-primary)" />
-                            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-primary)' }}>Contexto</span>
-                        </div>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.5 }}>
-                            IA faz perguntas de qualificação e adapta a conversa ao perfil do lead automaticamente.
-                        </p>
-                    </div>
-                    <div className="glass-panel" style={{ padding: '1.25rem', borderLeft: '3px solid var(--color-primary)' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                            <Clock size={16} color="var(--color-primary)" />
-                            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-primary)' }}>Consistência</span>
-                        </div>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.5 }}>
-                            IA mantém o padrão de qualidade em 100% das conversas, sem variação de humor ou cansaço.
-                        </p>
-                    </div>
-                </motion.div>
-
                 <p style={{ textAlign: 'center', fontSize: '0.8rem', color: 'var(--color-text-muted)', marginTop: '1.5rem' }}>
-                    * Conversas ilustrativas baseadas em cenários reais
+                    Clique nas imagens para ampliar. * Prints reais de atendimentos da Convert.AI (nomes alterados para privacidade)
                 </p>
             </div>
+
+            {/* Fullscreen Lightbox */}
+            <AnimatePresence>
+                {selectedImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedImage(null)}
+                        style={{
+                            position: 'fixed',
+                            inset: 0,
+                            zIndex: 100,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            background: 'rgba(0,0,0,0.92)',
+                            backdropFilter: 'blur(4px)'
+                        }}
+                    >
+                        <motion.button
+                            type="button"
+                            onClick={() => setSelectedImage(null)}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            style={{
+                                position: 'absolute',
+                                top: '1.5rem',
+                                right: '1.5rem',
+                                padding: '0.5rem',
+                                borderRadius: '50%',
+                                background: 'rgba(255,255,255,0.1)',
+                                border: 'none',
+                                cursor: 'pointer',
+                                zIndex: 10
+                            }}
+                        >
+                            <X size={24} color="white" />
+                        </motion.button>
+
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            onClick={(e) => e.stopPropagation()}
+                            style={{ maxWidth: '95vw', maxHeight: '90vh' }}
+                        >
+                            <img
+                                src={selectedImage.src}
+                                alt={selectedImage.alt}
+                                style={{
+                                    maxWidth: '95vw',
+                                    maxHeight: '90vh',
+                                    objectFit: 'contain',
+                                    borderRadius: '0.5rem',
+                                    boxShadow: '0 25px 60px rgba(0,0,0,0.5)'
+                                }}
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Mobile responsiveness */}
+            <style>{`
+                @media (max-width: 640px) {
+                    .comparativo-grid {
+                        grid-template-columns: 1fr !important;
+                    }
+                }
+            `}</style>
         </section>
     );
 };
